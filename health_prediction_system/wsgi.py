@@ -15,4 +15,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'health_prediction_system.settin
 
 application = get_wsgi_application()
 
-app=application
+# app=application
