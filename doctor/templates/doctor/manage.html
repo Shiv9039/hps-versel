@@ -1,0 +1,68 @@
+{% extends "core/base.doctor.html" %}
+{% load static %}
+{% block content %}
+
+    <main>
+        {% if messages %}
+        <div class="card notification-card notification-invitation">
+            <div class="card-body">
+            {% for message in messages %}
+                    <div class="card-title">{{message}} </div>
+                {% endfor %}
+            </div>
+          </div> 
+        {% endif %}
+    
+        <div class="container mt-5" >
+            <div class="col-11 text-center">
+                <h3 style="color:brown; font-size:30px;">
+                    Manage appointments
+                </h3>
+            </div>
+            <div class="row">
+    
+            {% for app in appointments %}
+                <div class="col-lg-4" style="display:contents;">
+                    <div class="card .w-100 card-margin" style=" border:1px solid brown; width:360px; padding:0px 20px;">
+                        <div class="card-header no-border">
+                            <h5 class="card-title" style="font-size:25px;">{{app.full_name}}</h5>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="widget-49">
+                                <div class="widget-49-title-wrapper">
+                                    <div class="widget-49-date-primary">
+                                        <span style="color:grey;" class="widget-49-date-day">{{app.sent_date|date:"d"}} /</span>
+                                        <span style="color:grey;" class="widget-49-date-month">{{app.sent_date|date:"M"}} /</span>
+                                        <span style="color:grey;" class="widget-49-date-month">{{app.sent_date|date:"Y"}}</span>
+                                    </div>
+                                    <div class="widget-49-meeting-info">
+                                        <span class="widget-49-pro-title">{{app.email}}</span><br>
+                                        <span style="color:grey;" class="widget-49-meeting-time">{{app.contact}}</span>
+                                    </div>
+                                </div>
+                                <div class="widget-49-meeting-points">
+                                    <span>{{app.request}}</span>
+                                </div>
+                                <hr class="w-100">
+                                {% if app.accepted == False %}
+                                <form method="POST" action="{% url 'manage' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="date" name="date" class="form-control mb-2" 
+                                         value=""
+                                        min="01-01-2022" max="31-12-2022">
+                                        <input hidden="true" name="appointment-id" value="{{app.id}}">
+                                    <input class="btn-block btn-danger form-control" type="submit" value="Accept">
+                                </div>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><br>
+                </div>
+            {% endfor %}
+    
+            </div>
+        </main>        
+    
+{% endblock %}

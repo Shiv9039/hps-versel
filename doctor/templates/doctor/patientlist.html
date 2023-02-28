@@ -1,0 +1,65 @@
+{% extends "core/base.doctor.html" %}
+{%load static%}
+{% block content %}
+
+	<!-- <section class="ftco-section"> -->
+		<!-- <div class="container"> -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+							
+              {% if patient %}
+              <thead style="text-align:center;">
+								<tr>
+									
+									<th class="patientinfotablehead">Id</th>
+									<th class="patientinfotablehead">Profile</th>
+									<th class="patientinfotablehead">Full Name</th>
+									<th class="patientinfotablehead">Email Id</th>
+									<th class="patientinfotablehead">Contact No</th>
+									{% comment %} <th class="patientinfotablehead">Action</th> {% endcomment %}
+									
+								</tr>
+							</thead>
+						
+							
+							<tbody >
+                {% for p in patient %}
+								<tr >
+                  
+									<td> {{p.id}}</td>
+									<td>
+										<img style=" width: 100px;
+                    height: 100px;
+                    border-radius: 50%;" src="{{p.profile_image.url}}" class="mb-2" alt="Unable to Load">
+									</td>
+									<!-- {% comment %} <div class="img" style="background-image: url(images/person_1.jpg);"></div> {% endcomment %} -->
+									</td>
+									<td>{{p.user.first_name}} {{p.user.last_name}}</td>
+									<td>{{p.user.email}}</td>
+									<td>{{p.contact}}</td>
+									{% comment %} <td >
+										<button type="button"  data-dismiss="alert" aria-label="Close">
+											<span style="color:#27063d;"aria-hidden="true"><i class="fa fa-2x fa-close"></i></span>
+                      
+										</button>
+									</td> {% endcomment %}
+                  <td>&nbsp;</td>
+
+								</tr>
+                {% endfor %}
+							</tbody>
+						</table>
+					
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+	<!-- </section> -->
+
+	{% endblock %}
+
+
+  
