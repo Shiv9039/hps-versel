@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-$+xyni+oo_u+l=8404(la@&b0tia7rv!)rk8whhfqvko$aio!z
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -124,13 +124,13 @@ USE_TZ = True
 
 
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT =  BASE_DIR / 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT =  BASE_DIR / 'static/'
 
-import os
-STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os. path.join(BASE_DIR, 'staticfiles_build', 'static')
+# import os
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+# STATIC_ROOT = os. path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  BASE_DIR / 'media/'
